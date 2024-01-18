@@ -5,9 +5,9 @@ const projcs = require('./pe_list_projcs.json')
 exports.lookup = function (code) {
   return projcs.ProjectedCoordinateSystems.find(function (crs) {
     // accept both integers and strings
-    return (+code === crs['wkid'] || +code === crs['latestWkid'])
+    return (+code === crs['wkid'] || +code === crs['latestWkid'] || code === crs['wkt'])
   }) ||
   geogcs.GeographicCoordinateSystems.find(function (crs) {
-    return (+code === crs['wkid'] || +code === crs['latestWkid'])
+    return (+code === crs['wkid'] || +code === crs['latestWkid'] || code === crs['wkt'])
   })
 }
